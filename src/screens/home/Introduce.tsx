@@ -1,4 +1,5 @@
 import { Button } from "@/elements";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,10 +14,30 @@ export function Introduce() {
               "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(31,31,31,0.7) 47.12%, rgba(63,63,63,0.21) 78.37%, rgba(102,102,102,0) 100%)",
           }}
         >
-          <div className="lg:p-6 xl:w-1/2 flex flex-col items-start gap-4 md:gap-6">
-            <h1 className="text-start font-oswald font-bold text-[40px] md:leading-[84px] md:text-[76px] text-primary">
-              Make dangerous goods safe
-            </h1>
+          <div className="lg:p-6 lg:w-[70%] xl:w-1/2 flex flex-col items-start gap-4 md:gap-6">
+            <div className="text-start font-oswald font-bold text-[40px] md:leading-[84px] md:text-[76px] text-primary">
+              <div className="inline-block pr-3 lg:pr-5">Make</div>
+              <div className="inline-block pr-3 lg:pr-5 text-white relative">
+                dangerous
+                <Image
+                  src={"/images/ezgif-659b58f62a8e0b.gif"}
+                  width={365}
+                  height={70}
+                  className="absolute left-0 right-0 max-md:top-3 top-2 translate-y-1/2 object-cover"
+                />
+              </div>
+              <div className="inline-block pr-3 lg:pr-5">goods</div>
+              <div className="inline-block pr-3 lg:pr-5 text-[#40C522] relative">
+                safe
+                 <Image
+                  src={"/images/ezgif-452d53846e86c2.gif"}
+                  width={365}
+                  height={70}
+                  className="absolute left-0 right-0 top-0 translate-y-1/2 object-cover"
+                />
+              </div>
+            </div>
+            <h1 className="hidden">Make dangerous goods safe`</h1>
             <div className="space-y-3 hidden md:block">
               <p className="text-base text-white">
                 <span className="font-bold">“DGpac”</span> - a simple name yet
