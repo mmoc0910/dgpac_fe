@@ -1,6 +1,5 @@
 import { ButtonContactUs, MainLayout } from "@/components";
 import { getImageUrl, Product, productService } from "@/lib/api-services";
-import { Project } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
 import { ContactUS } from "@/screens";
 import { GetStaticProps } from "next";
@@ -194,7 +193,7 @@ type Repo = {
   products: PaginatedResponse<Product>;
 };
 
-export const getStaticProps = (async (context: GetStaticPropsContext) => {
+export const getStaticProps = (async () => {
   const res = await productService.getAll({ page: 1, limit: 4 });
   const repo = {
     products: res.data.data,

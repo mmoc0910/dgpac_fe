@@ -12,7 +12,6 @@ import {
   AboutUs,
   ContactUS,
   ExpertOfLocation,
-  HomePage,
   Introduce,
   OurBlog,
   Products,
@@ -66,7 +65,7 @@ type Repo = {
   blogs: Blog;
 };
 
-export const getStaticProps = (async (context: GetStaticPropsContext) => {
+export const getStaticProps = (async () => {
   const res = await Promise.all([
     projectService.getAll({ page: 1, limit: 3 }),
     productService.getAll({ page: 1, limit: 4 }),

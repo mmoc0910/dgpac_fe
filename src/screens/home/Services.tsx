@@ -1,8 +1,6 @@
 import { IconName } from "@/elements";
 import { AppIcons } from "@/elements";
-import { type } from "os";
 import React from "react";
-import clsx from "clsx";
 import { Heading } from "@/components";
 import { cn } from "@/lib/utils";
 

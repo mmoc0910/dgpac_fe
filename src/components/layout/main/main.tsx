@@ -1,8 +1,6 @@
 import React from "react";
 import { ReactNode } from "react";
 import { Quicksand, Oswald } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
 import { Header } from "./items";
 
 import scrollImage from "../../../../public/images/scroll-image.png";
@@ -20,14 +18,6 @@ const oswald = Oswald({
   subsets: ["latin", "vietnamese"],
 });
 
-const links = [
-  { title: "About us", href: "/" },
-  { title: "Services", href: "/" },
-  { title: "Products", href: "/" },
-  { title: "Projects", href: "/" },
-  { title: "Blogs", href: "/" },
-  { title: "Contact", href: "/" },
-];
 
 export function MainLayout({ children }: Props) {
   return (

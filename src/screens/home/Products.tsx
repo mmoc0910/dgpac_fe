@@ -18,7 +18,7 @@ export function Products({products} : Props) {
           className="lg:text-white px-4 lg:px-16 xl:px-28"
         />
         <div className="lg:px-16 xl:px-28 max-lg:scroll-px-4 max-lg:flex max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:scroll-smooth max-lg:pb-[112px] lg:grid grid-cols-3 gap-6">
-          {products.map((item, index) => {
+          {products.map((item) => {
             return (
               <div
                 key={item._id}

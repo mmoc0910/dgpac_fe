@@ -4,14 +4,12 @@ import { useController, UseControllerProps } from "react-hook-form";
 
 type Props = {
   placeholder?: string;
-  type?: React.HTMLInputTypeAttribute;
   describe?: string;
   containerClassname?: string;
 } & UseControllerProps;
 
 export function InputSelectFile({
   placeholder,
-  type = "text",
   describe,
   containerClassname = "",
   ...useControllerProps

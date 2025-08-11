@@ -1,4 +1,4 @@
-import axios, { AxiosProgressEvent, AxiosRequestConfig, type AxiosError, type AxiosResponse } from "axios"
+import axios, { AxiosProgressEvent, AxiosRequestConfig} from "axios"
 
 // Create axios instance with base configuration
 const api = axios.create({

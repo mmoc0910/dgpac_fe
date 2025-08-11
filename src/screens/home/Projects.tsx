@@ -1,7 +1,4 @@
 import { Heading } from "@/components";
-import { AppIcons } from "@/elements";
-import clsx from "clsx";
-import Image from "next/image";
 import React from "react";
 import { ProjectCard } from "./ProjectCard";
 import { Project } from "@/lib/api-services";

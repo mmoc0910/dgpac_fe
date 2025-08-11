@@ -5,13 +5,9 @@ import { AppIcons } from "@/elements";
 import { getImageUrl, Project } from "@/lib/api-services";
 import { IndustryEnum, projectService, WorkEnum } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
-import { ProjectCard } from "@/screens/home/ProjectCard";
 import { InferGetServerSidePropsType } from "next";
-import { GetServerSideProps } from "next";
 import { GetStaticProps } from "next";
-import { GetServerSidePropsContext } from "next";
 import { InferGetStaticPropsType } from "next";
-import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -140,7 +136,7 @@ export default function Projects() {
             </h1>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
               {data?.map((project) => (
-                <div className="w-full aspect-[3/4] relative rounded-[10px] overflow-hidden cursor-pointer group">
+                <div key={project?._id} className="w-full aspect-[3/4] relative rounded-[10px] overflow-hidden cursor-pointer group">
                   <Image
                     src={getImageUrl(project?.image)}
                     alt={project.title}

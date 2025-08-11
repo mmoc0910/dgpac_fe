@@ -40,7 +40,7 @@ export function Header() {
 
   return (
     <header className="fixed z-50 top-0 left-0 right-0 w-full bg-background h-11 lg:h-16 px-4 lg:px-8 flex items-center justify-between">
-      <a
+      <button type="button"
         href="/"
         onClick={(e) => {
           e.preventDefault();
@@ -49,7 +49,7 @@ export function Header() {
         className="relative block w-[120px] h-11 lg:w-[174px] lg:h-[64px]"
       >
         <Image src="/logo.svg" alt="logo" fill priority />
-      </a>
+      </button>
       <nav className="hidden lg:flex items-center justify-center">
         <ul className="flex items-center">
           {links.map((item) => {

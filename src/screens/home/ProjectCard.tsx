@@ -1,7 +1,6 @@
 import { AppIcons } from "@/elements";
-import { getImageUrl, Project, projectService } from "@/lib/api-services";
+import { getImageUrl, Project } from "@/lib/api-services";
 import clsx from "clsx";
-import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

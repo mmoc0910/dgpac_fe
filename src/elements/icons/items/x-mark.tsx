@@ -2,8 +2,6 @@ import React from "react";
 import { IconProps } from "../type";
 
 export function XMark({
-  color = "currentColor",
-  size = 24,
   className = "",
 }: IconProps) {
   return (
