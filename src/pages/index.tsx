@@ -32,7 +32,6 @@ export default function Home({
   blogs,
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("projects ~ ", products);
   return (
     <>
       <Seo

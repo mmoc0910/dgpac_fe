@@ -15,7 +15,6 @@ import { Seo } from "@/components/common/Seo";
 export default function ProjectDetail({
   project,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
-  console.log("project ~ ", project);
   const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
   useEffect(() => {
     (async () => {

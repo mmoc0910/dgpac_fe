@@ -49,7 +49,6 @@ export default function Projects() {
           return [...prevData, ...res.data.data];
         });
       } catch (error) {
-        console.log("error ~ ", error);
       }
     })();
   }, [page, industries, works]);

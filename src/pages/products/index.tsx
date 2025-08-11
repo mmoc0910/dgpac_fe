@@ -15,7 +15,6 @@ import { Seo } from "@/components/common/Seo";
 export default function Products({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("products ~ ", products);
   return (
     <div className="">
       <Seo
