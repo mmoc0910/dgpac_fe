@@ -41,7 +41,16 @@ export default function Products({
         {products
           ?.sort((a, b) => a.position - b.position)
           ?.map((item, index) => {
-            const styles = {
+            const stylesMap: Record<
+              number,
+              {
+                wrapper: string;
+                container: string;
+                image: string;
+                container_content: string;
+                product_range?: string;
+              }
+            > = {
               0: {
                 wrapper: cn(
                   "col-span-2 lg:bg-gray200 lg:px-28 lg:pt-8 lg:pb-24",
@@ -98,8 +107,9 @@ export default function Products({
                 ),
                 product_range: "hidden",
               },
-            }[`${index}`];
-            console.log("styles ~ ", styles);
+            };
+
+            const styles = stylesMap[index];
             return (
               <div key={item._id} className={cn(styles?.wrapper)}>
                 <p className="max-lg:block hidden font-oswald text-2xl font-semibold text-primary500 pb-4">
@@ -138,10 +148,8 @@ export default function Products({
                                   {children}
                                 </strong>
                               ),
-                              ul:  ({ children }) => (
-                                <ul className="space-y-3">
-                                  {children}
-                                </ul>
+                              ul: ({ children }) => (
+                                <ul className="space-y-3">{children}</ul>
                               ),
                             }}
                           >
@@ -190,7 +198,7 @@ export default function Products({
 Products.Layout = MainLayout;
 
 type Repo = {
-  products: PaginatedResponse<Product>;
+  products: Product[];
 };
 
 export const getStaticProps = (async () => {

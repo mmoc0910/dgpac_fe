@@ -20,7 +20,7 @@ export function FunnelSolid({
         fill={color}
         stroke={color}
         strokeWidth="2"
-        strokestrokeLinejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

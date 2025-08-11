@@ -20,8 +20,7 @@ export default function ProjectDetail({
   useEffect(() => {
     (async () => {
       try {
-        const res = await projectService.getRelated(project?._id);
-        console.log("res ~ ", res.data);
+        const res = await projectService.getRelated(project?._id as string);
         setRelatedProjects(res.data.data);
       } catch (error) {}
     })();
@@ -125,10 +124,8 @@ type Repo = {
 export const getServerSideProps = (async (
   context: GetServerSidePropsContext
 ) => {
-  const { params, query } = context;
-  console.log("params ~ ", params);
-  console.log("query ~ ", query);
-  const res = await projectService.getById(params?.slug);
+  const { params } = context;
+  const res = await projectService.getById(params?.slug as string);
   const repo = res.data;
   return { props: { project: res.data } };
 }) satisfies GetServerSideProps<Repo>;

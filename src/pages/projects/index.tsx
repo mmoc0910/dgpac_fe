@@ -11,7 +11,7 @@ import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues, useForm } from "react-hook-form";
 import useSWRInfinite from "swr/infinite";
 import { baseUrl } from "..";
 
@@ -20,7 +20,7 @@ const PAGE_LIMIT = 6;
 export default function Projects() {
   const [showFilter, setShowFilter] = useState(false);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState();
+  const [totalPage, setTotalPage] = useState<number | undefined>();
   const [data, setData] = useState<Project[]>([]);
   const { control, setValue, watch } = useForm({
     defaultValues: { industry: [], work: [] },
@@ -111,7 +111,7 @@ export default function Projects() {
             <div className="p-4 lg:px-6 lg:pt-6 lg:pb-14 rounded-[10px] bg-white space-y-4 lg:space-y-9">
               <ProjectFilterForm
                 name="industry"
-                control={control}
+               control={control as unknown as Control<FieldValues>}
                 data={Object.entries(IndustryEnum).map(([key, value]) => ({
                   key,
                   value,
@@ -121,7 +121,7 @@ export default function Projects() {
 
               <ProjectFilterForm
                 name="work"
-                control={control}
+               control={control as unknown as Control<FieldValues>}
                 data={Object.entries(WorkEnum).map(([key, value]) => ({
                   key,
                   value,
@@ -136,7 +136,10 @@ export default function Projects() {
             </h1>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
               {data?.map((project) => (
-                <div key={project?._id} className="w-full aspect-[3/4] relative rounded-[10px] overflow-hidden cursor-pointer group">
+                <div
+                  key={project?._id}
+                  className="w-full aspect-[3/4] relative rounded-[10px] overflow-hidden cursor-pointer group"
+                >
                   <Image
                     src={getImageUrl(project?.image)}
                     alt={project.title}
@@ -187,7 +190,7 @@ export default function Projects() {
                 </div>
               ))}
             </div>
-            {page < totalPage && (
+            {page < (totalPage || 0) && (
               <div className="flex items-center justify-center">
                 <button
                   type="button"

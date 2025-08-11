@@ -58,7 +58,7 @@ export function Services() {
     <div id="services" className="lg:bg-[url(/images/IMG_2239.jpg)] bg-cover">
       <div className="space-y-3 lg:space-y-0">
         <div className="block lg:hidden px-4">
-          <Heading heading="OUR SERVICES" textAlign="start" />
+          <Heading heading="OUR SERVICES" />
         </div>
         <div className="px-4 lg:p-16 xl:px-28 xl:py-16 lg:bg-[rgba(0, 0, 0, 0.01)] lg:backdrop-blur-sm md:grid-cols-2 md:grid lg:grid-cols-3 gap-3 space-y-2 lg:space-y-0">
           <div className="hidden lg:flex grid-cols-1 rounded-[10px] bg-primary items-center justify-center">

@@ -8,13 +8,14 @@ type BaseProps = {
 };
 
 type ButtonAsLink = BaseProps & {
-  href: string;
-  target?: string;
+  href: string; // bắt buộc khi là link
+  target?: React.HTMLAttributeAnchorTarget;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 type ButtonAsButton = BaseProps & {
-  href?: undefined;
+  href?: never; // không cho phép href khi là button
+  target?: never; // target chỉ dành cho link
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -35,14 +36,16 @@ export const Button = React.forwardRef<
     className
   );
 
+  // Nhánh Link
   if ("href" in props) {
+    const linkProps = props as ButtonAsLink;
     return (
-      <Link href={props.href} passHref legacyBehavior>
+      <Link href={linkProps.href} passHref legacyBehavior>
         <a
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={classes}
-          target={props.target}
-          onClick={props.onClick}
+          target={linkProps.target}
+          onClick={linkProps.onClick}
         >
           {children}
         </a>
@@ -50,16 +53,18 @@ export const Button = React.forwardRef<
     );
   }
 
+  // Nhánh Button
+  const buttonProps = props as ButtonAsButton;
   return (
     <button
       ref={ref as React.Ref<HTMLButtonElement>}
       className={classes}
-      type={props.type ?? "button"}
-      onClick={props.onClick}
-      disabled={props.disabled || props?.isLoading}
+      type={buttonProps.type ?? "button"}
+      onClick={buttonProps.onClick}
+      disabled={buttonProps.disabled || buttonProps.isLoading}
     >
       {children}
-      {props.isLoading && (
+      {buttonProps.isLoading && (
         <div className="w-4 h-4 rounded-full border-[3px] border-t-transparent animate-spin" />
       )}
     </button>

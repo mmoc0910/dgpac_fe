@@ -47,9 +47,39 @@ export function Footer() {
           className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-9 md:gap-6 relative`}
         >
           <div className="absolute -bottom-5 md:-bottom-10 -right-5 xl:bottom-0 xl:-right-[30px] space-y-2 md:space-y-3">
-            <Link href={"/"} className="block size-11 md:size-[60px] relative overflow-hidden"><Image src={'/images/facebook.png'} fill  className="object-cover" /></Link>
-            <Link href={"/"} className="block size-11 md:size-[60px] relative overflow-hidden"><Image src={'/images/whatsapp.png'} fill  className="object-cover" /></Link>
-            <Link href={"/"} className="block size-11 md:size-[60px] relative overflow-hidden"><Image src={'/images/linkedIn.png'} fill  className="object-cover" /></Link>
+            <Link
+              href={"/"}
+              className="block size-11 md:size-[60px] relative overflow-hidden"
+            >
+              <Image
+                src={"/images/facebook.png"}
+                fill
+                className="object-cover"
+                alt="facebook"
+              />
+            </Link>
+            <Link
+              href={"/"}
+              className="block size-11 md:size-[60px] relative overflow-hidden"
+            >
+              <Image
+                src={"/images/whatsapp.png"}
+                fill
+                className="object-cover"
+                alt="whatsapp"
+              />
+            </Link>
+            <Link
+              href={"/"}
+              className="block size-11 md:size-[60px] relative overflow-hidden"
+            >
+              <Image
+                src={"/images/linkedIn.png"}
+                fill
+                className="object-cover"
+                alt="linkedIn"
+              />
+            </Link>
           </div>
           {headquarters.map((item, index) => {
             return (

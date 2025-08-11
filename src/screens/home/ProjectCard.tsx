@@ -36,7 +36,7 @@ export function ProjectCard({ project }: Props) {
           <p className="font-oswald text-xl lg:text-[28px] font-semibold text-white">
             {project.title}
           </p>
-          <p className="font-semibold text-white">{project.description}</p>
+          <p className="font-semibold text-white line-clamp-5">{project.description}</p>
           <div className="flex justify-end">
             <Link
               href={`/projects/${project.slug}`}

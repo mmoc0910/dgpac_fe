@@ -33,7 +33,7 @@ const content: ContentType[] = [
 ];
 
 export function AboutUs() {
-  const [image, selectImage] = useState();
+  const [image, selectImage] = useState<string | undefined>();
 
   return (
     <div id="about-us" className="lg:bg-background-secondary px-4 py-6 xl:px-28 xl:py-16 lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0">

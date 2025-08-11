@@ -41,7 +41,6 @@ export function Header() {
   return (
     <header className="fixed z-50 top-0 left-0 right-0 w-full bg-background h-11 lg:h-16 px-4 lg:px-8 flex items-center justify-between">
       <button type="button"
-        href="/"
         onClick={(e) => {
           e.preventDefault();
           window.location.href = "/";

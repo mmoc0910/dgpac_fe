@@ -2,24 +2,25 @@ import { AppIcons, Button, Input, InputSelectFile } from "@/elements";
 import { uploadService, userRequestService } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
+type ContactFormValues = {
+  name: string;
+  companyName: string;
+  email: string;
+  phone: string;
+  location: string;
+  request: string;
+  safetyDataSheet?: File | null;
+  packingList?: File | null;
+};
 
 export function ContactUS() {
   const [showForm, setshowForm] = useState(false);
-  const { control, handleSubmit, reset } = useForm();
+  const { control, handleSubmit, reset } = useForm<ContactFormValues>();
 
-  const onSubmit = async (payload: {
-    name: string;
-    companyName: string;
-    email: string;
-    phone: string;
-    location: string;
-    request: string;
-    safetyDataSheet?: File;
-    packingList?: File;
-  }) => {
+  const onSubmit: SubmitHandler<ContactFormValues> = async (payload) => {
     try {
-      console.log("payload ~ ", payload);
       let safetyDataSheet = "";
       let packingList = "";
 
@@ -39,7 +40,6 @@ export function ContactUS() {
         safetyDataSheet,
         packingList,
       });
-      console.log("success");
       reset({
         name: "",
         companyName: "",
@@ -122,31 +122,31 @@ export function ContactUS() {
           >
             <Input
               name="name"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Your Name"
             />
             <Input
               name="companyName"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Company Name"
             />
             <Input
               name="email"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Email"
             />
             <Input
               name="phone"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Phone"
             />
             <Input
               name="location"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Your location"
               describe="(by Country)"
@@ -154,20 +154,20 @@ export function ContactUS() {
             />
             <Input
               name="request"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               rules={{ required: true }}
               placeholder="Your request"
               containerClassname="col-span-2"
             />
             <InputSelectFile
               name="safetyDataSheet"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               placeholder="Safety Data Sheet"
               containerClassname="col-span-1"
             />
             <InputSelectFile
               name="packingList"
-              control={control}
+              control={control as unknown as Control<FieldValues>}
               placeholder="Packing List"
               containerClassname="col-span-1"
             />

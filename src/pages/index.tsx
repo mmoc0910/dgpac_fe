@@ -3,6 +3,7 @@ import { Seo } from "@/components/common/Seo";
 import {
   Blog,
   blogService,
+  PaginatedResponse,
   Product,
   productService,
   Project,
@@ -60,9 +61,24 @@ export default function Home({
 Home.Layout = MainLayout;
 
 type Repo = {
-  projects: Project;
-  products: Product;
-  blogs: Blog;
+  projects: {
+    data: Project[];
+    total: number;
+    page: number;
+    totalPages: number;
+  };
+  products: {
+    data: Product[];
+    total: number;
+    page: number;
+    totalPages: number;
+  };
+  blogs: {
+    data: Blog[];
+    total: number;
+    page: number;
+    totalPages: number;
+  };
 };
 
 export const getStaticProps = (async () => {

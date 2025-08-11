@@ -5,7 +5,7 @@ import { AppIcons } from "@/elements";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  data: { key: string; value: string };
+  data: { key: string; value: string }[];
   heading: string;
 } & UseControllerProps;
 

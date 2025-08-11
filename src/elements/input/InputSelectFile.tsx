@@ -44,13 +44,13 @@ export function InputSelectFile({
         />
         <label
           htmlFor={useControllerProps.name}
-          className="block cursor-pointer text-sm"
+          className="block cursor-pointer"
         >
           {value instanceof File ? (
-            <span className="text-black line-clamp-1">{value.name}</span>
+            <span className="text-black line-clamp-1 text-base md:text-lg">{value.name}</span>
           ) : (
             <>
-              <span className="text-neutral400 line-clamp-1">{placeholder}</span>
+              <span className="text-neutral400 line-clamp-1 text-base md:text-lg">{placeholder}</span>
               {useControllerProps?.rules?.required && (
                 <span className="text-primary">*</span>
               )}

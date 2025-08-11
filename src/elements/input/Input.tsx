@@ -26,10 +26,10 @@ export function Input({
         containerClassname
       )}
     >
-      <div className="relative w-full text-sm">
-        <input className="outline-none w-full peer" type={type} {...field} />
+      <div className="relative w-full">
+        <input className="outline-none w-full peer text-base md:text-lg" type={type} {...field} />
         {placeholder && !field.value && (
-          <div className="line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none peer-focus:hidden">
+          <div className=" text-base md:text-lg line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none peer-focus:hidden">
             {placeholder}
             {useControllerProps?.rules?.required && (
               <span className="text-primary">*</span>
