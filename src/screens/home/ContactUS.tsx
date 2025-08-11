@@ -1,0 +1,190 @@
+import { AppIcons, Button, Input, InputSelectFile } from "@/elements";
+import { uploadService, userRequestService } from "@/lib/api-services";
+import { cn } from "@/lib/utils";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
+export function ContactUS() {
+  const [showForm, setshowForm] = useState(false);
+  const { control, handleSubmit, reset } = useForm();
+
+  const onSubmit = async (payload: {
+    name: string;
+    companyName: string;
+    email: string;
+    phone: string;
+    location: string;
+    request: string;
+    safetyDataSheet?: File;
+    packingList?: File;
+  }) => {
+    try {
+      console.log("payload ~ ", payload);
+      let safetyDataSheet = "";
+      let packingList = "";
+
+      if (payload?.safetyDataSheet) {
+        const response = await uploadService.uploadFile(
+          payload?.safetyDataSheet
+        );
+        safetyDataSheet = response.data.path;
+      }
+      if (payload?.packingList) {
+        const response = await uploadService.uploadFile(payload?.packingList);
+        packingList = response.data.path;
+      }
+
+      const response = await userRequestService.submit({
+        ...payload,
+        safetyDataSheet,
+        packingList,
+      });
+      console.log("success");
+      reset({
+        name: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        location: "",
+        request: "",
+        safetyDataSheet: null,
+        packingList: null,
+      });
+      setshowForm(false);
+    } catch (error) {}
+  };
+
+  return (
+    <div id="contact" className="md:bg-[url(/images/IMG_2239.jpg)] bg-cover">
+      <div className="p-4 lg:p-16 xl:px-28 xl:py-16 lg:bg-[rgba(0, 0, 0, 0.5)] lg:backdrop-blur-sm gap-6 flex md:flex-col lg:flex-row items-stretch">
+        <div className="w-full lg:w-[520px] xl:w-[445px] bg-primary rounded-[10px] p-8 lg:p-10 xl:p-[60px] flex items-center justify-center">
+          <div className="space-y-8 lg:space-y-6">
+            <h2 className="font-oswald font-bold text-4xl text-warning500">
+              Why DGpac?
+            </h2>
+            <div className="flex items-start gap-3">
+              <div className="shrink-0">
+                <AppIcons name="check-circle" size={32} color="#F5B30B" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-white">
+                UN-Certified h3ackaging 100% compliance, tested, and ready to
+                use
+              </h3>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="shrink-0">
+                <AppIcons name="cost" size={32} color="#F5B30B" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-white">
+                Cost-Effective Competitive pricing while maintaining top-tier
+                services{" "}
+              </h3>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="shrink-0">
+                <AppIcons name="20-years" size={32} color="#F5B30B" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-white">
+                Trusted DG Expertise 20 years of safe DG handling with a
+                continued commitment to excellence
+              </h3>
+            </div>
+            <div className="flex items-center justify-center md:hidden">
+              <button
+                className="font-bold text-xl px-4 py-2 rounded-[10px] bg-white border border-primary50"
+                onClick={() => setshowForm(true)}
+              >
+                CONTACT US
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "space-y-6 lg:block transition duration-300",
+            showForm
+              ? "max-md:fixed max-md:z-40 max-md:inset-0 max-md:top-11 max-md:bg-primary60 max-md:p-8 max-md:space-y-3 max-md:opacity-100"
+              : "max-md:hidden max-md:opacity-0 max-md:inset-10"
+          )}
+        >
+          <div className="">
+            <h2 className="font-oswald font-medium text-xl md:text-4xl text-white">
+              Looking for the right DG packaging & declaration?
+            </h2>
+            <p className="font-oswald text-lg md:text-[28px] text-warning500 font-medium">
+              Submit this form and our DG expert will be in touch shortly!
+            </p>
+            <div className="w-[50px] my-3 border-b-2 border-b-primary500 md:border-b-primary"></div>
+          </div>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="grid grid-cols-2 gap-x-3 gap-y-6 md:gap-6"
+          >
+            <Input
+              name="name"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Your Name"
+            />
+            <Input
+              name="companyName"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Company Name"
+            />
+            <Input
+              name="email"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Email"
+            />
+            <Input
+              name="phone"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Phone"
+            />
+            <Input
+              name="location"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Your location"
+              describe="(by Country)"
+              containerClassname="col-span-2"
+            />
+            <Input
+              name="request"
+              control={control}
+              rules={{ required: true }}
+              placeholder="Your request"
+              containerClassname="col-span-2"
+            />
+            <InputSelectFile
+              name="safetyDataSheet"
+              control={control}
+              placeholder="Safety Data Sheet"
+              containerClassname="col-span-1"
+            />
+            <InputSelectFile
+              name="packingList"
+              control={control}
+              placeholder="Packing List"
+              containerClassname="col-span-1"
+            />
+            <div className="col-span-2">
+              <ul className="max-md:text-sm font-semibold text-white list-disc pl-5">
+                <li>All information provided will remain confidential</li>
+                <li>
+                  (<span className="text-primary">*</span>) is required field
+                </li>
+              </ul>
+            </div>
+            <div className="max-md:flex max-md:justify-center max-md:col-span-2">
+              <Button type="submit">SUBMIT</Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
