@@ -129,11 +129,11 @@ export default function Projects() {
               />
             </div>
           </div>
-          <div className="w-full lg:w-[calc(100%-325px)] flex-none space-y-4 lg:space-y-6">
+          <div className="w-full lg:w-[calc(100%-374px)] flex-none space-y-4 lg:space-y-6">
             <h1 className="font-oswald text-[28px] font-semibold text-primary leading-9">
               Projects
             </h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
+            <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
               {data?.map((project) => (
                 <div
                   key={project?._id}
