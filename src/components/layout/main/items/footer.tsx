@@ -1,4 +1,5 @@
 import { AppIcons } from "@/elements";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,27 +7,34 @@ import React from "react";
 const headquarters = [
   {
     title: "Changi Airfreight Centre Office",
-    phone: "(+65) 6242 2562",
-    location: `115 Airport Cargo Road #02-01 Cargo Agents Building 'C' Singapore 819466`,
+    phone: ["(+65) 6242 2562"],
+    location: `115 Airport Cargo Road
+     #02-01 Cargo Agents Building 'C' Singapore 819466`,
     email: "sales@dgpac.com.sg",
   },
   {
     title: "Jurong Office",
-    phone: "(+65) 6816 2761",
-    location: `1 Sunview Road #04-38 Eco-tech@Sunview Singapore 627615`,
+    phone: ["(+65) 6816 2761"],
+    location: `1 Sunview Road
+     #04-38 Eco-tech@Sunview Singapore 627615`,
     email: "sales@dgpac.com.sg",
   },
   {
-    title: "Hazmat Management Specialist Thailand",
-    phone: "(+662) 101 8864",
-    location: `246 Chok Chai 4 Soi 54 Ladpharo Bangkok 10230`,
-    email: "operations@dgpac.com.sg",
-  },
-  {
     title: "DGpac Vietnam Co., Ltd",
-    phone: "(+84) 989 956 430 ",
+    phone: ["(+84) 989 956 430"],
     location: `12th floor, 39B Truong Son Street, Tan Son Nhat Ward, Hochiminh City 70000, Vietnam`,
     email: "vietnam@dgpac.com.sg",
+  },
+  {
+    title: "DGPAC SDN. BHD",
+    phone: ["(+60) 11 6172 6334", "(+65) 9039 7569 (WhatsApp only)"],
+    location: ``,
+    email: "russell@dgpac.com.sg",
+  },
+  {
+    title: "HMS Packing Co., Ltd",
+    phone: ["(+66) 99 178 9393"],
+    email: "sales@hazmatms.com",
   },
 ];
 
@@ -46,7 +54,7 @@ export function Footer() {
         <div
           className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-9 md:gap-6 relative`}
         >
-          <div className="absolute -bottom-5 md:-bottom-10 -right-5 xl:bottom-0 xl:-right-[30px] space-y-2 md:space-y-3">
+          {/* <div className="absolute -bottom-5 md:-bottom-10 -right-5 xl:bottom-0 xl:-right-[30px] space-y-2 md:space-y-3">
             <Link
               href={"/"}
               className="block size-11 md:size-[60px] relative overflow-hidden"
@@ -80,7 +88,7 @@ export function Footer() {
                 alt="linkedIn"
               />
             </Link>
-          </div>
+          </div> */}
           {headquarters.map((item, index) => {
             return (
               <div
@@ -90,19 +98,34 @@ export function Footer() {
                 <p className="font-oswald font-medium text-xl text-primary">
                   {item.title}
                 </p>
-                <div className="flex items-center gap-2">
-                  <div className="shrink-0">
-                    <AppIcons name="phone" size={22} color="#1F2937" />
+                {item?.phone &&
+                  item?.phone?.map((item) => {
+                    return (
+                      <div className="flex items-center gap-2" key={item}>
+                        <div className="shrink-0">
+                          <AppIcons name="phone" size={22} color="#1F2937" />
+                        </div>
+                        <p className="font-bold">{item}</p>
+                      </div>
+                    );
+                  })}
+
+                {item?.location && (
+                  <div className="flex items-start gap-2">
+                    <div className="shrink-0">
+                      <AppIcons name="location" size={22} color="#1F2937" />
+                    </div>
+                    <p className="font-medium group-last:mr-8 whitespace-pre-line">
+                      {item.location}
+                    </p>
                   </div>
-                  <p className="font-bold">{item.phone}</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <div className="shrink-0">
-                    <AppIcons name="location" size={22} color="#1F2937" />
-                  </div>
-                  <p className="font-medium group-last:mr-8">{item.location}</p>
-                </div>
-                <div className="flex items-center gap-2 mt-auto">
+                )}
+                <div
+                  className={cn(
+                    "flex items-center gap-2",
+                    item?.location && "mt-auto"
+                  )}
+                >
                   <div className="shrink-0">
                     <AppIcons name="mail" size={22} color="#1F2937" />
                   </div>
@@ -118,6 +141,60 @@ export function Footer() {
           © 2015 DG Packaging Solutions (Singapore) Pte Ltd. All rights reserved
           | Powered by The Logistician
         </p>
+      </div>
+      <div className="fixed z-20 bottom-11 right-1 md:bottom-12 md:right-2 xl:bottom-14 lg:right-7 xl:right-14 space-y-2 md:space-y-3">
+        <Link
+          target="_blank"
+          href={"https://www.facebook.com/dgpackagingsolutions"}
+          className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
+        >
+          <Image
+            src={"/images/Frame.svg"}
+            width={28}
+            height={28}
+            className="object-cover size-5 md:size-7"
+            alt="facebook"
+          />
+        </Link>
+        <Link
+          href={"tel:+6562422562"}
+          title="SĐT WhatsApp: (+65) 6242 2562 "
+          className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
+        >
+          <Image
+            src={"/images/Vector.svg"}
+            width={28}
+            height={28}
+            className="object-contain size-5 md:size-7"
+            alt="whatsapp"
+          />
+        </Link>
+        <Link
+          target="_blank"
+          href={"https://www.linkedin.com/company/107779699"}
+          className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
+        >
+          <Image
+            src={"/images/devicon_linkedin.svg"}
+            width={28}
+            height={28}
+            className="object-contain size-5 md:size-7"
+            alt="linkIn"
+          />
+        </Link>
+        <Link
+          target="_blank"
+          href={"https://zalo.me/0989956430"}
+          className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
+        >
+          <Image
+            src={"/images/icons8-zalo-100 1.svg"}
+            width={40}
+            height={40}
+            className="object-contain size-[30px] md:size-10"
+            alt="zalo"
+          />
+        </Link>
       </div>
     </footer>
   );

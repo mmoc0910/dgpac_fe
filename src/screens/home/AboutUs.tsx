@@ -36,9 +36,13 @@ export function AboutUs() {
   const [image, selectImage] = useState<string | undefined>();
 
   return (
-    <div id="about-us" className="lg:bg-background-secondary px-4 py-6 xl:px-28 xl:py-16 lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0">
+    <div
+      id="about-us"
+      className="lg:bg-background-secondary px-4 py-6 xl:px-28 xl:py-16 lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0"
+    >
       <div className="relative w-full aspect-square lg:aspect-auto rounded-xl overflow-hidden">
         <Image
+          priority
           src={image ?? "/images/aboutus1.jpg"}
           alt="about-us"
           fill
@@ -53,7 +57,8 @@ export function AboutUs() {
             false: { background: "", text: "" },
           }[`${selected}`];
           return (
-            <div key={item.title}
+            <div
+              key={item.title}
               onClick={() => selectImage(item.image)}
               className={clsx(
                 "flex items-start p-4 gap-4 rounded-xl cursor-pointer group hover:bg-primary transition duration-150",
@@ -79,7 +84,7 @@ export function AboutUs() {
                 </p>
                 <p
                   className={clsx(
-                    "font-medium group-hover:text-neutral300 transition duration-150",
+                    "font-medium group-hover:text-neutral300 transition duration-150 text-justify",
                     styles.text
                   )}
                 >

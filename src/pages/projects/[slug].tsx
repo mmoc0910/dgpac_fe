@@ -44,6 +44,7 @@ export default function ProjectDetail({
           <div className="col-span-4 drop-shadow-[0px_2px_6px_rgba(16,24,40,0.08)] bg-white lg:rounded-t-[10px]">
             <div className="relative w-full aspect-square">
               <Image
+                priority
                 src={getImageUrl(project.image)}
                 alt={project.title}
                 fill

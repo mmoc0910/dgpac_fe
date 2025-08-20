@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { Control, FieldValues, useForm } from "react-hook-form";
 import useSWRInfinite from "swr/infinite";
 import { baseUrl } from "..";
+import dayjs from "dayjs";
 
 const PAGE_LIMIT = 6;
 
@@ -48,8 +49,7 @@ export default function Projects() {
           }
           return [...prevData, ...res.data.data];
         });
-      } catch (error) {
-      }
+      } catch (error) {}
     })();
   }, [page, industries, works]);
 
@@ -110,7 +110,7 @@ export default function Projects() {
             <div className="p-4 lg:px-6 lg:pt-6 lg:pb-14 rounded-[10px] bg-white space-y-4 lg:space-y-9">
               <ProjectFilterForm
                 name="industry"
-               control={control as unknown as Control<FieldValues>}
+                control={control as unknown as Control<FieldValues>}
                 data={Object.entries(IndustryEnum).map(([key, value]) => ({
                   key,
                   value,
@@ -120,7 +120,7 @@ export default function Projects() {
 
               <ProjectFilterForm
                 name="work"
-               control={control as unknown as Control<FieldValues>}
+                control={control as unknown as Control<FieldValues>}
                 data={Object.entries(WorkEnum).map(([key, value]) => ({
                   key,
                   value,
@@ -140,6 +140,7 @@ export default function Projects() {
                   className="w-full aspect-[3/4] relative rounded-[10px] overflow-hidden cursor-pointer group"
                 >
                   <Image
+                    priority
                     src={getImageUrl(project?.image)}
                     alt={project.title}
                     fill
@@ -161,15 +162,16 @@ export default function Projects() {
                   <div className="absolute inset-0 z-20 p-4 lg:p-6 flex items-end">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="font-oswald text-xl lg:text-[28px] font-semibold text-white opacity-100 translate-y-0 group-hover:-translate-y-full group-hover:opacity-0 transition duration-200"
+                      className="line-clamp-3 font-oswald text-xl lg:text-[28px] font-semibold text-white opacity-100 translate-y-0 group-hover:-translate-y-full group-hover:opacity-0 transition duration-200"
                     >
                       {project.title}
                     </Link>
                     <div className="space-y-1 absolute left-0 bottom-0 p-6 opacity-100 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-                      <p className="font-oswald text-xl lg:text-[28px] font-semibold text-white">
+                      <p className="line-clamp-3 font-oswald text-xl lg:text-[28px] font-semibold text-white">
                         {project.title}
                       </p>
-                      <p className="font-semibold text-white line-clamp-5">
+                      <p className="font-oswald font-semibold text-gray200">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p>
+                      <p className="font-semibold text-white line-clamp-2">
                         {project.description}
                       </p>
                       <div className="flex justify-end">

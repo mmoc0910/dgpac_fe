@@ -1,7 +1,9 @@
+import { SelectCountries } from "@/components/common/SelectCountries";
 import { AppIcons, Button, Input, InputSelectFile } from "@/elements";
 import { uploadService, userRequestService } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import { emailValidate, nameValidate, phoneValidate } from "@/lib/validate";
+import React, { useEffect, useRef, useState } from "react";
 import { Control, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 type ContactFormValues = {
@@ -16,42 +18,74 @@ type ContactFormValues = {
 };
 
 export function ContactUS() {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showForm, setshowForm] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { control, handleSubmit, reset } = useForm<ContactFormValues>();
 
+  useEffect(() => {
+    if (isSuccess) {
+      timeoutRef.current = setTimeout(() => {
+        setIsSuccess(false);
+        reset({
+          name: "",
+          companyName: "",
+          email: "",
+          phone: "",
+          location: "",
+          request: "",
+          safetyDataSheet: null,
+          packingList: null,
+        });
+      }, 3000);
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isSuccess, reset]);
+
   const onSubmit: SubmitHandler<ContactFormValues> = async (payload) => {
-    try {
-      let safetyDataSheet = "";
-      let packingList = "";
+    const timeout = setTimeout(() => {
+      console.log("submit form ~ ", payload);
+      setIsSuccess(true);
+    }, 5000);
+    // try {
+    //   let safetyDataSheet = "";
+    //   let packingList = "";
 
-      if (payload?.safetyDataSheet) {
-        const response = await uploadService.uploadFile(
-          payload?.safetyDataSheet
-        );
-        safetyDataSheet = response.data.path;
-      }
-      if (payload?.packingList) {
-        const response = await uploadService.uploadFile(payload?.packingList);
-        packingList = response.data.path;
-      }
+    //   if (payload?.safetyDataSheet) {
+    //     const response = await uploadService.uploadFile(
+    //       payload?.safetyDataSheet
+    //     );
+    //     safetyDataSheet = response.data.path;
+    //   }
+    //   if (payload?.packingList) {
+    //     const response = await uploadService.uploadFile(payload?.packingList);
+    //     packingList = response.data.path;
+    //   }
 
-      const response = await userRequestService.submit({
-        ...payload,
-        safetyDataSheet,
-        packingList,
-      });
-      reset({
-        name: "",
-        companyName: "",
-        email: "",
-        phone: "",
-        location: "",
-        request: "",
-        safetyDataSheet: null,
-        packingList: null,
-      });
-      setshowForm(false);
-    } catch (error) {}
+    //   await userRequestService.submit({
+    //     ...payload,
+    //     safetyDataSheet,
+    //     packingList,
+    //   });
+    //   reset({
+    //     name: "",
+    //     companyName: "",
+    //     email: "",
+    //     phone: "",
+    //     location: "",
+    //     request: "",
+    //     safetyDataSheet: null,
+    //     packingList: null,
+    //   });
+    //   setshowForm(false);
+    // } catch (error) {
+    //   throw new Error(`can not submit contact: ${error}`);
+    // }
   };
 
   return (
@@ -67,8 +101,8 @@ export function ContactUS() {
                 <AppIcons name="check-circle" size={32} color="#F5B30B" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-white">
-                UN-Certified h3ackaging 100% compliance, tested, and ready to
-                use
+                UN-Certified Packaging <br />
+                100% compliance, tested, and ready to use
               </h3>
             </div>
             <div className="flex items-start gap-3">
@@ -76,8 +110,8 @@ export function ContactUS() {
                 <AppIcons name="cost" size={32} color="#F5B30B" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-white">
-                Cost-Effective Competitive pricing while maintaining top-tier
-                services{" "}
+                Cost-Effective
+                <br /> Competitive pricing while maintaining top-tier services
               </h3>
             </div>
             <div className="flex items-start gap-3">
@@ -85,8 +119,9 @@ export function ContactUS() {
                 <AppIcons name="20-years" size={32} color="#F5B30B" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-white">
-                Trusted DG Expertise 20 years of safe DG handling with a
-                continued commitment to excellence
+                Trusted DG Expertise <br />
+                20 years of safe DG handling with a continued commitment to
+                excellence
               </h3>
             </div>
             <div className="flex items-center justify-center md:hidden">
@@ -123,31 +158,43 @@ export function ContactUS() {
             <Input
               name="name"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{
+                required: { value: true, message: "Required" },
+                pattern: { value: nameValidate, message: "Invalid" },
+              }}
               placeholder="Your Name"
             />
             <Input
               name="companyName"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{
+                required: { value: true, message: "Required" },
+              }}
               placeholder="Company Name"
             />
             <Input
               name="email"
+              type="email"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{
+                required: { value: true, message: "Required" },
+                pattern: { value: emailValidate, message: "Invalid" },
+              }}
               placeholder="Email"
             />
             <Input
               name="phone"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{
+                required: { value: true, message: "Required" },
+                pattern: { value: phoneValidate, message: "Invalid" },
+              }}
               placeholder="Phone"
             />
-            <Input
+            <SelectCountries
               name="location"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{ required: { value: true, message: "Required" } }}
               placeholder="Your location"
               describe="(by Country)"
               containerClassname="col-span-2"
@@ -155,7 +202,7 @@ export function ContactUS() {
             <Input
               name="request"
               control={control as unknown as Control<FieldValues>}
-              rules={{ required: true }}
+              rules={{ required: { value: true, message: "Required" } }}
               placeholder="Your request"
               containerClassname="col-span-2"
             />
@@ -172,15 +219,26 @@ export function ContactUS() {
               containerClassname="col-span-1"
             />
             <div className="col-span-2">
-              <ul className="max-md:text-sm font-semibold text-white list-disc pl-5">
-                <li>All information provided will remain confidential</li>
-                <li>
-                  (<span className="text-primary">*</span>) is required field
-                </li>
-              </ul>
+              {isSuccess ? (
+                <p className="font-bold text-cyan-600 text-center">
+                  <p>
+                    Thank you! We&#39;re received your information and will be
+                    in touch soon
+                  </p>
+                </p>
+              ) : (
+                <ul className="max-md:text-sm font-semibold text-white list-disc pl-5">
+                  <li>All information provided will remain confidential</li>
+                  <li>
+                    (<span className="text-primary">*</span>) is required field
+                  </li>
+                </ul>
+              )}
             </div>
             <div className="max-md:flex max-md:justify-center max-md:col-span-2">
-              <Button type="submit">SUBMIT</Button>
+              <Button type="submit" className="hover:bg-[#540A0D]">
+                SUBMIT
+              </Button>
             </div>
           </form>
         </div>

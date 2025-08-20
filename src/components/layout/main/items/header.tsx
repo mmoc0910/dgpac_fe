@@ -6,9 +6,9 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const links = [
-  { title: "About us", href: "/#about-us" },
+  { title: "About Us", href: "/#about-us" },
   { title: "Services", href: "/#services" },
-  { title: "Products", href: "/#products" },
+  { title: "Products", href: "/products" },
   { title: "Projects", href: "/projects" },
   { title: "Blogs", href: "/#blogs" },
   { title: "Contact", href: "/#contact" },
@@ -40,7 +40,8 @@ export function Header() {
 
   return (
     <header className="fixed z-50 top-0 left-0 right-0 w-full bg-background h-11 lg:h-16 px-4 lg:px-8 flex items-center justify-between">
-      <button type="button"
+      <button
+        type="button"
         onClick={(e) => {
           e.preventDefault();
           window.location.href = "/";
@@ -55,6 +56,7 @@ export function Header() {
             return (
               <li className="px-4 group cursor-pointer" key={item.title}>
                 <Link
+                  prefetch
                   href={item.href}
                   className="font-bold text-xl group-hover:text-primary20 transition duration-300"
                 >

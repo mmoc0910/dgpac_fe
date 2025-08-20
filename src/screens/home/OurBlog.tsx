@@ -9,11 +9,8 @@ type Props = { blogs: Blog[] };
 export function OurBlog({ blogs }: Props) {
   return (
     <div id="blogs" className="py-3 lg:py-16 xl:py-16 space-y-8">
-      <div className="relative max-lg:px-4 ">
+      <div className="max-lg:px-4 ">
         <Heading heading="OUR BLOG" className="text-primary500" />
-        <div className="absolute max-lg:hidden lg:right-16 xl:right-28 top-3 hover:-rotate-45 transition duration-200 cursor-pointer">
-          <AppIcons name="arrow-circle-right" size={38} color="#B44028" />
-        </div>
       </div>
       <div
         className="max-lg:scroll-px-4 max-lg:flex max-lg:items-stretch max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:scroll-smooth 

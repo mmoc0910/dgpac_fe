@@ -6,10 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+type Props = { products: Product[] };
 
-type Props = {products: Product[]}
-
-export function Products({products} : Props) {
+export function Products({ products }: Props) {
   return (
     <div id="products" className="lg:bg-[url(/images/IMG_2239.jpg)] bg-cover">
       <div className="py-3 lg:py-16 xl:pt-16 lg:pb-48 xl:pb-36 bg-[rgba(0, 0, 0, 0.5)] backdrop-blur-sm space-y-8">
@@ -26,6 +25,7 @@ export function Products({products} : Props) {
               >
                 <div className="product-card-image relative w-full h-[270px] group-first:lg:w-[756px] group-first:lg:h-[420px]">
                   <Image
+                    priority
                     src={getImageUrl(item.image)}
                     alt={item.title}
                     fill
@@ -43,12 +43,21 @@ export function Products({products} : Props) {
                   bottom-0 opacity-100 translate-y-0 group-hover/content:translate-y-10
                    group-hover/content:opacity-0 transition duration-300 max-lg:shadow-sm"
                   >
-                    <p className="font-oswald font-bold text-[28px] text-primary">
+                    <Link
+                      href={item?.linkSharepoint || ""}
+                      target="_blank"
+                      className="block font-oswald font-bold text-[28px] text-primary"
+                    >
                       {item.title}
+                    </Link>
+                    <p className="text-neutral800 line-clamp-3">
+                      {item.description}
                     </p>
-                    <p className="text-neutral800 line-clamp-3">{item.description}</p>
                     <div className="flex xl:hidden justify-end">
-                      <Link href={'/products'} className="hover:-rotate-45 transition duration-150">
+                      <Link
+                        href={"/products"}
+                        className="hover:-rotate-45 transition duration-150"
+                      >
                         <AppIcons
                           name="arrow-right-circle-solid"
                           size={38}
@@ -61,12 +70,19 @@ export function Products({products} : Props) {
                     className="w-full px-4 py-3 space-y-4 bg-[#B4402880] backdrop-blur-[20px] 
                   rounded-[10px] absolute bottom-0 opacity-0 -translate-y-20 group-hover/content:translate-y-0 group-hover/content:opacity-100 transition duration-300"
                   >
-                    <p className="font-oswald font-bold text-[28px] text-white">
+                    <Link
+                      href={item?.linkSharepoint || ""}
+                      target="_blank"
+                      className="block font-oswald font-bold text-[28px] text-white"
+                    >
                       {item.title}
-                    </p>
+                    </Link>
                     <p className="text-white">{item.description}</p>
                     <div className="flex justify-end">
-                      <Link href={'/products'} className="hover:-rotate-45 transition duration-150">
+                      <Link
+                        href={"/products"}
+                        className="hover:-rotate-45 transition duration-150"
+                      >
                         <AppIcons
                           name="arrow-circle-right"
                           color="#fff"

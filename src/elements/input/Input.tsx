@@ -17,30 +17,40 @@ export function Input({
   containerClassname = "",
   ...useControllerProps
 }: Props) {
-  const { field } = useController(useControllerProps);
+  const {
+    field,
+    fieldState: { error },
+  } = useController(useControllerProps);
 
   return (
-    <div
-      className={cn(
-        "p-4 rounded-[10px] bg-background font-bold ",
-        containerClassname
-      )}
-    >
-      <div className="relative w-full">
-        <input className="outline-none w-full peer text-base md:text-lg" type={type} {...field} />
-        {placeholder && !field.value && (
-          <div className=" text-base md:text-lg line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none peer-focus:hidden">
-            {placeholder}
-            {useControllerProps?.rules?.required && (
-              <span className="text-primary">*</span>
-            )}
-          </div>
+    <div className={containerClassname}>
+      <div
+        className={cn(
+          "p-4 rounded-[10px] bg-background font-bold",
+          error?.message && "border-2 border-primary",
+        )}
+      >
+        <div className="relative w-full">
+          <input
+            className="outline-none w-full peer text-base md:text-lg"
+            type={type}
+            {...field}
+          />
+          {placeholder && !field.value && (
+            <div className=" text-base md:text-lg line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none peer-focus:hidden">
+              {placeholder}
+              {useControllerProps?.rules?.required && (
+                <span className="text-primary">*</span>
+              )}
+            </div>
+          )}
+        </div>
+
+        {describe && (
+          <span className="text-xs text-primary font-normal">{describe}</span>
         )}
       </div>
-
-      {describe && (
-        <span className="text-xs text-primary font-normal">{describe}</span>
-      )}
+      {error?.message && <p className="text-primary text-sm font-semibold">{error?.message}</p>}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { baseUrl } from "..";
 import { Seo } from "@/components/common/Seo";
+import Link from "next/link";
 
 export default function Products({
   products,
@@ -116,7 +117,7 @@ export default function Products({
                 </p>
                 <div className={cn(styles?.container)}>
                   <div className={cn(styles?.image)}>
-                    <Image
+                    <Image priority
                       src={getImageUrl(item.image)}
                       alt={item.title}
                       fill
@@ -124,13 +125,13 @@ export default function Products({
                     />
                   </div>
                   <div className={cn(styles?.container_content)}>
-                    <p
+                    <Link href={item?.linkSharepoint || ''} target="_blank"
                       className={cn(
                         "font-oswald text-[28px] text-primary font-semibold max-lg:hidden block"
                       )}
                     >
                       {item.title}
-                    </p>
+                    </Link>
                     <div className={cn("space-y-3")}>
                       <div className={cn("font-medium md:text-lg space-y-3")}>
                         {/* <p>

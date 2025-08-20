@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { apiClient } from "./axios";
 import qs from "qs";
 
@@ -10,6 +11,7 @@ export interface Product {
   range: string[];
   position: number;
   content?: string;
+  linkSharepoint?: string
 }
 
 export enum IndustryEnum {
@@ -41,7 +43,8 @@ export interface Project {
   industry: IndustryEnum;
   work: WorkEnum;
   slug: string;
-  content: string
+  content: string;
+  createdAt: dayjs.Dayjs
 }
 
 export interface UserRequest {

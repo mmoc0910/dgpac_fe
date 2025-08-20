@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export function Introduce() {
@@ -19,6 +18,7 @@ export function Introduce() {
               <div className="inline-block pr-3 lg:pr-5 text-white relative">
                 dangerous
                 <Image
+                  priority
                   alt="introduce background"
                   src={"/images/ezgif-659b58f62a8e0b.gif"}
                   width={365}
@@ -30,6 +30,7 @@ export function Introduce() {
               <div className="inline-block pr-3 lg:pr-5 text-[#40C522] relative">
                 safe
                 <Image
+                  priority
                   alt="introduce background"
                   src={"/images/ezgif-452d53846e86c2.gif"}
                   width={365}
@@ -60,12 +61,12 @@ export function Introduce() {
                 and cost-effectively - in accordance with regulations.
               </p>
             </div>
-            <Link
+            {/* <Link
               href={"/#contact"}
               className="flex items-center gap-3 w-fit px-4 py-2 rounded-[10px] text-xl text-white bg-primary font-bold cursor-pointer"
             >
               CONTACT US
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
