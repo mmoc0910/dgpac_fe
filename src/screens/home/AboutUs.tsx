@@ -43,7 +43,7 @@ export function AboutUs() {
       <div className="relative w-full aspect-square lg:aspect-auto rounded-xl overflow-hidden">
         <Image
           priority
-          src={image ?? "/images/aboutus1.jpg"}
+          src={image ?? "/images/aboutus2.jpg"}
           alt="about-us"
           fill
           className="object-cover"
