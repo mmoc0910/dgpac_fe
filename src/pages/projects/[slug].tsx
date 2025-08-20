@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { Seo } from "@/components/common/Seo";
+import dayjs from "dayjs";
 
 export default function ProjectDetail({
   project,
@@ -52,9 +53,11 @@ export default function ProjectDetail({
               />
             </div>
             <div className="p-6 space-y-4">
-              <h1 className="font-oswald font-medium text-[32px] text-primary">
+              <div className=""><h1 className="font-oswald font-medium text-[32px] text-primary">
                 {project.title}
               </h1>
+              <p className="font-oswald font-semibold text-gray-400">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p></div>
+              
               <div className="text-base">
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}

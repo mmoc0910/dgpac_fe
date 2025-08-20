@@ -2,8 +2,7 @@ import { ButtonContactUs, MainLayout } from "@/components";
 import { getImageUrl, Product, productService } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
 import { ContactUS } from "@/screens";
-import { GetStaticProps } from "next";
-import { GetStaticPropsContext } from "next";
+import { GetServerSideProps } from "next";
 import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
@@ -15,7 +14,7 @@ import Link from "next/link";
 
 export default function Products({
   products,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getServerSideProps>) {
   return (
     <div className="">
       <Seo
@@ -117,7 +116,8 @@ export default function Products({
                 </p>
                 <div className={cn(styles?.container)}>
                   <div className={cn(styles?.image)}>
-                    <Image priority
+                    <Image
+                      priority
                       src={getImageUrl(item.image)}
                       alt={item.title}
                       fill
@@ -125,7 +125,9 @@ export default function Products({
                     />
                   </div>
                   <div className={cn(styles?.container_content)}>
-                    <Link href={item?.linkSharepoint || ''} target="_blank"
+                    <Link
+                      href={item?.linkSharepoint || ""}
+                      target="_blank"
                       className={cn(
                         "font-oswald text-[28px] text-primary font-semibold max-lg:hidden block"
                       )}
@@ -201,10 +203,10 @@ type Repo = {
   products: Product[];
 };
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   const res = await productService.getAll({ page: 1, limit: 4 });
   const repo = {
     products: res.data.data,
   };
   return { props: repo };
-}) satisfies GetStaticProps<Repo>;
+}) satisfies GetServerSideProps<Repo>;

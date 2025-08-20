@@ -28,6 +28,7 @@ import {
   ArrowLeft,
   Funnel,
   FunnelSolid,
+  Check,
 } from "./items";
 
 const icons = {
@@ -58,7 +59,8 @@ const icons = {
   "x-mark": XMark,
   "arrow-left": ArrowLeft,
   funnel: Funnel,
-  'funnel-solid': FunnelSolid
+  "funnel-solid": FunnelSolid,
+  check: Check,
 };
 
 export type IconName = keyof typeof icons;

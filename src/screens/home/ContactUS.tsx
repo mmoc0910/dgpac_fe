@@ -54,41 +54,42 @@ export function ContactUS() {
   }, [isSuccess, reset]);
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (payload) => {
-    try {
-      let safetyDataSheet = "";
-      let packingList = "";
+    console.log("payload ~ ", payload);
+    // try {
+    //   let safetyDataSheet = "";
+    //   let packingList = "";
 
-      if (payload?.safetyDataSheet) {
-        const response = await uploadService.uploadFile(
-          payload?.safetyDataSheet
-        );
-        safetyDataSheet = response.data.path;
-      }
-      if (payload?.packingList) {
-        const response = await uploadService.uploadFile(payload?.packingList);
-        packingList = response.data.path;
-      }
+    //   if (payload?.safetyDataSheet) {
+    //     const response = await uploadService.uploadFile(
+    //       payload?.safetyDataSheet
+    //     );
+    //     safetyDataSheet = response.data.path;
+    //   }
+    //   if (payload?.packingList) {
+    //     const response = await uploadService.uploadFile(payload?.packingList);
+    //     packingList = response.data.path;
+    //   }
 
-      await userRequestService.submit({
-        ...payload,
-        safetyDataSheet,
-        packingList,
-      });
-      setIsSuccess(true);
-      // reset({
-      //   name: "",
-      //   companyName: "",
-      //   email: "",
-      //   phone: "",
-      //   location: "",
-      //   request: "",
-      //   safetyDataSheet: null,
-      //   packingList: null,
-      // });
-      // setshowForm(false);
-    } catch (error) {
-      throw new Error(`can not submit contact: ${error}`);
-    }
+    //   await userRequestService.submit({
+    //     ...payload,
+    //     safetyDataSheet,
+    //     packingList,
+    //   });
+    //   setIsSuccess(true);
+    //   // reset({
+    //   //   name: "",
+    //   //   companyName: "",
+    //   //   email: "",
+    //   //   phone: "",
+    //   //   location: "",
+    //   //   request: "",
+    //   //   safetyDataSheet: null,
+    //   //   packingList: null,
+    //   // });
+    //   // setshowForm(false);
+    // } catch (error) {
+    //   throw new Error(`can not submit contact: ${error}`);
+    // }
   };
 
   return (
@@ -223,10 +224,15 @@ export function ContactUS() {
             />
             <div className="col-span-2">
               {isSuccess ? (
-                <p className="font-bold text-cyan-600 text-center">
-                  Thank you! We&#39;re received your information and will be in
-                  touch soon
-                </p>
+                <div className="p-4 bg-background rounded-[10px] flex items-start gap-2">
+                  <div className="size-6 bg-green-600 rounded-full flex items-center justify-center shrink-0">
+                    <AppIcons name="check" className="text-white size-4" />
+                  </div>
+                  <p className="font-medium text-green-600 text-base">
+                    Thank you! We&#39;re received your information and will be
+                    in touch soon
+                  </p>
+                </div>
               ) : (
                 <ul className="max-md:text-sm font-semibold text-white list-disc pl-5">
                   <li>All information provided will remain confidential</li>

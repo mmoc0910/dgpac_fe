@@ -170,7 +170,7 @@ export default function Projects() {
                       <p className="line-clamp-3 font-oswald text-xl lg:text-[28px] font-semibold text-white">
                         {project.title}
                       </p>
-                      <p className="font-oswald font-semibold text-gray200">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p>
+                      {/* <p className="font-oswald font-semibold text-gray200">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p> */}
                       <p className="font-semibold text-white line-clamp-2">
                         {project.description}
                       </p>

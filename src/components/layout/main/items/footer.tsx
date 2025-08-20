@@ -157,7 +157,8 @@ export function Footer() {
           />
         </Link>
         <Link
-          href={"tel:+6562422562"}
+          href={"https://wa.me/6562422562"}
+          target="_blank"
           title="SĐT WhatsApp: (+65) 6242 2562 "
           className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
         >

@@ -8,6 +8,8 @@ type Props = {
   containerClassname?: string;
 } & UseControllerProps;
 
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+
 export function InputSelectFile({
   placeholder,
   describe,
@@ -20,11 +22,25 @@ export function InputSelectFile({
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file && file.type === "application/pdf") {
-      onChange(file);
-    } else {
+
+    if (!file) {
       onChange(null);
+      return;
     }
+
+    if (file.type !== "application/pdf") {
+      alert("Please select PDF file.");
+      onChange(null);
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      alert("File size exceeds 100MB.");
+      onChange(null);
+      return;
+    }
+
+    onChange(file);
   };
 
   return (
@@ -47,10 +63,14 @@ export function InputSelectFile({
           className="block cursor-pointer"
         >
           {value instanceof File ? (
-            <span className="text-black line-clamp-1 text-base md:text-lg">{value.name}</span>
+            <span className="text-black line-clamp-1 text-base md:text-lg">
+              {value.name}
+            </span>
           ) : (
             <>
-              <span className="text-neutral400 line-clamp-1 text-base md:text-lg">{placeholder}</span>
+              <span className="text-neutral400 line-clamp-1 text-base md:text-lg">
+                {placeholder}
+              </span>
               {useControllerProps?.rules?.required && (
                 <span className="text-primary">*</span>
               )}

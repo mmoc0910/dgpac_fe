@@ -3,7 +3,6 @@ import { Seo } from "@/components/common/Seo";
 import {
   Blog,
   blogService,
-  PaginatedResponse,
   Product,
   productService,
   Project,
@@ -20,8 +19,7 @@ import {
   Services,
 } from "@/screens";
 import {
-  GetStaticProps,
-  GetStaticPropsContext,
+  GetServerSideProps,
   InferGetStaticPropsType,
 } from "next";
 
@@ -31,7 +29,7 @@ export default function Home({
   projects,
   blogs,
   products,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getServerSideProps>) {
   return (
     <>
       <Seo
@@ -80,7 +78,7 @@ type Repo = {
   };
 };
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   const res = await Promise.all([
     projectService.getAll({ page: 1, limit: 3 }),
     productService.getAll({ page: 1, limit: 4 }),
@@ -92,4 +90,4 @@ export const getStaticProps = (async () => {
     blogs: res[2].data,
   };
   return { props: repo };
-}) satisfies GetStaticProps<Repo>;
+}) satisfies GetServerSideProps<Repo>;
