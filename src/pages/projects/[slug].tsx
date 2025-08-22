@@ -43,7 +43,7 @@ export default function ProjectDetail({
         </div>
         <div className="lg:p-16 lg:pt-0 xl:px-28 xl:pb-32 lg:grid grid-cols-6 gap-6">
           <div className="col-span-4 drop-shadow-[0px_2px_6px_rgba(16,24,40,0.08)] bg-white lg:rounded-t-[10px]">
-            <div className="relative w-full aspect-square">
+            <div className="relative w-full aspect-[9/6]">
               <Image
                 priority
                 src={getImageUrl(project.image)}
@@ -53,11 +53,15 @@ export default function ProjectDetail({
               />
             </div>
             <div className="p-6 space-y-4">
-              <div className=""><h1 className="font-oswald font-medium text-[32px] text-primary">
-                {project.title}
-              </h1>
-              <p className="font-oswald font-semibold text-gray-400 text-base">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p></div>
-              
+              <div className="">
+                <h1 className="font-oswald font-medium text-[32px] text-primary">
+                  {project.title}
+                </h1>
+                <p className="font-oswald font-semibold text-gray-400 text-base">
+                  {dayjs(project.createdAt).format("DD/MM/YYYY")}
+                </p>
+              </div>
+
               <div className="text-base">
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
@@ -72,6 +76,14 @@ export default function ProjectDetail({
                       <li className="before:content-['-'] before:mr-2">
                         {children}
                       </li>
+                    ),
+                    img: ({ src, alt }) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={src || ""}
+                        alt={alt || ""}
+                        className="max-w-full h-auto rounded-[10px]"
+                      />
                     ),
                   }}
                 >
