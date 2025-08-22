@@ -28,7 +28,7 @@ const content: ContentType[] = [
     title: "100% IATA/IMDG Certified",
     description: ` We are certified to prepare, pack and declare all type of dangerous goods transported by land, air or sea.`,
     icon: "protect",
-    image: "/images/aboutus4.png",
+    image: "/images/aboutus4.jpg",
   },
 ];
 
