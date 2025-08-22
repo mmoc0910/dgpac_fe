@@ -5,16 +5,11 @@ import { AppIcons } from "@/elements";
 import { getImageUrl, Project } from "@/lib/api-services";
 import { IndustryEnum, projectService, WorkEnum } from "@/lib/api-services";
 import { cn } from "@/lib/utils";
-import { InferGetServerSidePropsType } from "next";
-import { GetStaticProps } from "next";
-import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Control, FieldValues, useForm } from "react-hook-form";
-import useSWRInfinite from "swr/infinite";
 import { baseUrl } from "..";
-import dayjs from "dayjs";
 
 const PAGE_LIMIT = 6;
 
@@ -213,13 +208,3 @@ export default function Projects() {
 }
 
 Projects.Layout = MainLayout;
-
-type Repo = {
-  projects: Project;
-};
-
-// export const getServerSideProps = (async () => {
-//   const res = await projectService.getAll({ page: 1, limit: PAGE_LIMIT });
-//   const repo = res.data;
-//   return { props: repo };
-// }) satisfies GetServerSideProps<Repo>;

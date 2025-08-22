@@ -11,7 +11,7 @@ export interface Product {
   range: string[];
   position: number;
   content?: string;
-  linkSharepoint?: string
+  linkSharepoint?: string;
 }
 
 export enum IndustryEnum {
@@ -33,6 +33,8 @@ export enum WorkEnum {
   TRANSPORT = "transport",
   WAREHOUSING = "warehousing",
   TRAINING = "training",
+  LABELLING = "labelling",
+  DECLARATION = "declaration",
 }
 
 export interface Project {
@@ -44,7 +46,7 @@ export interface Project {
   work: WorkEnum;
   slug: string;
   content: string;
-  createdAt: dayjs.Dayjs
+  createdAt: dayjs.Dayjs;
 }
 
 export interface UserRequest {
@@ -175,7 +177,9 @@ export const blogService = {
     tag?: string;
   }): Promise<PaginatedResponse<Blog>> => {
     try {
-      const response = await apiClient.get<PaginatedResponse<Blog>>("/blogs", { params });
+      const response = await apiClient.get<PaginatedResponse<Blog>>("/blogs", {
+        params,
+      });
       return response;
     } catch (error) {
       throw error;

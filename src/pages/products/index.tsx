@@ -135,7 +135,7 @@ export default function Products({
                       {item.title}
                     </Link>
                     <div className={cn("space-y-3")}>
-                      <div className={cn("font-medium md:text-lg space-y-3")}>
+                      <div className={cn("font-medium md:text-lg space-y-3 text-justify")}>
                         {/* <p>
                         DGpac provides a comprehensive inventory of UN-tested
                         packaging. including various forms such as drums

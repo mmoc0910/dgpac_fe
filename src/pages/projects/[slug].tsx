@@ -56,7 +56,7 @@ export default function ProjectDetail({
               <div className=""><h1 className="font-oswald font-medium text-[32px] text-primary">
                 {project.title}
               </h1>
-              <p className="font-oswald font-semibold text-gray-400">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p></div>
+              <p className="font-oswald font-semibold text-gray-400 text-base">{dayjs(project.createdAt).format('DD/MM/YYYY')}</p></div>
               
               <div className="text-base">
                 <ReactMarkdown

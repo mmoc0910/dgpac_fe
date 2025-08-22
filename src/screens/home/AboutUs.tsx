@@ -14,7 +14,7 @@ type ContentType = {
 const content: ContentType[] = [
   {
     title: "The Pioneering Dangerous Goods Company",
-    description: `We are the first fully operating DG company located in Changi Airfreight Centre (Singapore), with established overseas offices in Malaysia, Thailand and Vietnam`,
+    description: `We are the first fully operating DG company located in Changi Airfreight Centre (Singapore), with established overseas offices in Malaysia, Thailand and Vietnam.`,
     icon: "check-list",
     image: "/images/aboutus2.jpg",
   },
@@ -80,7 +80,7 @@ export function AboutUs() {
                     styles.text
                   )}
                 >
-                  {item.title}
+                  {item.title}fgfg
                 </p>
                 <p
                   className={clsx(
