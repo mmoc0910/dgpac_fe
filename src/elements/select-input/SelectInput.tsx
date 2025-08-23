@@ -37,7 +37,7 @@ export function SelectInput({
 
   const handleChange = (value: string) => {
     field.onChange(value);
-    setSearchText(value)
+    setSearchText(value);
     toogleShowOptions();
   };
   const toogleShowOptions = () => setOpen(!open);
@@ -51,18 +51,6 @@ export function SelectInput({
             error?.message && "border-2 border-primary"
           )}
         >
-          {/* <div className="relative w-full h-6 md:h-7">
-            {placeholder && !field.value ? (
-              <div className="text-base md:text-lg line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                {placeholder}
-                {useControllerProps?.rules?.required && (
-                  <span className="text-primary">*</span>
-                )}
-              </div>
-            ) : (
-              <p className="text-base md:text-lg">{field.value}</p>
-            )}
-          </div> */}
           <div className="relative w-full">
             <input
               value={searchText}
@@ -73,7 +61,7 @@ export function SelectInput({
               className="outline-none w-full peer text-base md:text-lg"
               type={"text"}
             />
-            {placeholder && !field.value && (
+            {placeholder && !field.value && !searchText && (
               <div className="bg-backgroundd text-base md:text-lg line-clamp-1 text-neutral400 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none peer-focus:hidden">
                 {placeholder}
                 {useControllerProps?.rules?.required && (
