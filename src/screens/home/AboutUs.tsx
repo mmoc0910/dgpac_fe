@@ -43,7 +43,7 @@ export function AboutUs() {
       <div className="relative w-full aspect-square lg:aspect-auto rounded-xl overflow-hidden">
         <Image
           priority
-          src={image ?? "/images/aboutus2.jpg"}
+          src={"/images/Rectangle2071.png"}
           alt="about-us"
           fill
           className="object-cover"
@@ -80,7 +80,7 @@ export function AboutUs() {
                     styles.text
                   )}
                 >
-                  {item.title}fgfg
+                  {item.title}
                 </p>
                 <p
                   className={clsx(

@@ -27,4 +27,5 @@ export * from "./x-mark";
 export * from "./arrow-left";
 export * from "./funnel";
 export * from "./funnel-solid";
-export * from "./check";
+export * from "./check"; 
+export * from "./whatsapp"; 

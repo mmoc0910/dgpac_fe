@@ -6,13 +6,6 @@ import React from "react";
 
 const headquarters = [
   {
-    title: "Changi Airfreight Centre Office",
-    phone: ["(+65) 6242 2562"],
-    location: `115 Airport Cargo Road
-     #02-01 Cargo Agents Building 'C' Singapore 819466`,
-    email: "sales@dgpac.com.sg",
-  },
-  {
     title: "Jurong Office",
     phone: ["(+65) 6816 2761"],
     location: `1 Sunview Road
@@ -23,18 +16,26 @@ const headquarters = [
     title: "DGpac Vietnam Co., Ltd",
     phone: ["(+84) 989 956 430"],
     location: `12th floor, 39B Truong Son Street, Tan Son Nhat Ward, Hochiminh City 70000, Vietnam`,
-    email: "vietnam@dgpac.com.sg",
+    email: "hanna@dgpac.vn",
   },
   {
-    title: "DGPAC SDN. BHD",
-    phone: ["(+60) 11 6172 6334", "(+65) 9039 7569 (WhatsApp only)"],
-    location: ``,
-    email: "russell@dgpac.com.sg",
+    title: "Changi Airfreight Centre Office",
+    phone: ["(+65) 6242 2562"],
+    location: `115 Airport Cargo Road
+     #02-01 Cargo Agents Building 'C' Singapore 819466`,
+    email: "sales@dgpac.com.sg",
   },
   {
     title: "HMS Packing Co., Ltd",
     phone: ["(+66) 99 178 9393"],
     email: "sales@hazmatms.com",
+  },
+  {
+    title: "DGPAC SDN. BHD",
+    phone: ["(+60) 11 6172 6334"],
+    whatsapp: ["(+65) 9039 7569 (WhatsApp only)"],
+    location: ``,
+    email: "russell@dgpac.com.sg",
   },
 ];
 
@@ -104,6 +105,17 @@ export function Footer() {
                       <div className="flex items-center gap-2" key={item}>
                         <div className="shrink-0">
                           <AppIcons name="phone" size={22} color="#1F2937" />
+                        </div>
+                        <p className="font-bold">{item}</p>
+                      </div>
+                    );
+                  })}
+                {item?.whatsapp &&
+                  item?.whatsapp?.map((item) => {
+                    return (
+                      <div className="flex items-center gap-2" key={item}>
+                        <div className="shrink-0">
+                          <AppIcons name="whatsapp" size={22} color="#1F2937" />
                         </div>
                         <p className="font-bold">{item}</p>
                       </div>

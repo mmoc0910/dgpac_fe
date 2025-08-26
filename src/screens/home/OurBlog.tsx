@@ -10,7 +10,7 @@ export function OurBlog({ blogs }: Props) {
   return (
     <div id="blogs" className="py-3 lg:py-16 xl:py-16 space-y-8">
       <div className="max-lg:px-4 ">
-        <Heading heading="OUR BLOG" className="text-primary500" />
+        <Heading heading="OUR BLOG" className="lg:text-primary500" />
       </div>
       <div
         className="max-lg:scroll-px-4 max-lg:flex max-lg:items-stretch max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:scroll-smooth 

@@ -133,7 +133,7 @@ export function ContactUS() {
                 className="font-bold text-xl px-4 py-2 rounded-[10px] bg-white border border-primary50"
                 onClick={() => setshowForm(true)}
               >
-                CONTACT US
+                SEND A REQUEST
               </button>
             </div>
           </div>
@@ -142,7 +142,7 @@ export function ContactUS() {
           className={cn(
             "space-y-6 lg:block transition duration-300",
             showForm
-              ? "max-md:fixed max-md:z-40 max-md:inset-0 max-md:top-11 max-md:bg-primary60 max-md:p-8 max-md:space-y-3 max-md:opacity-100"
+              ? "max-md:fixed overflow-y-auto max-md:z-40 max-md:inset-0 max-md:top-11 max-md:bg-primary60 max-md:p-8 max-md:space-y-3 max-md:opacity-100"
               : "max-md:hidden max-md:opacity-0 max-md:inset-10"
           )}
         >

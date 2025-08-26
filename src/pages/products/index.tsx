@@ -15,6 +15,7 @@ import Link from "next/link";
 export default function Products({
   products,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
+  console.log('products ~ ', products)
   return (
     <div className="">
       <Seo
@@ -111,9 +112,13 @@ export default function Products({
             const styles = stylesMap[index];
             return (
               <div key={item._id} className={cn(styles?.wrapper)}>
-                <p className="max-lg:block hidden font-oswald text-2xl font-semibold text-primary500 pb-4">
+                <Link
+                  href={item?.linkSharepoint || ""}
+                  target="_blank"
+                  className="max-lg:block hidden font-oswald text-2xl font-semibold text-primary500 pb-4"
+                >
                   {item.title}
-                </p>
+                </Link>
                 <div className={cn(styles?.container)}>
                   <div className={cn(styles?.image)}>
                     <Image
@@ -135,7 +140,11 @@ export default function Products({
                       {item.title}
                     </Link>
                     <div className={cn("space-y-3")}>
-                      <div className={cn("font-medium md:text-lg space-y-3 text-justify")}>
+                      <div
+                        className={cn(
+                          "font-medium md:text-lg space-y-3 text-justify"
+                        )}
+                      >
                         {/* <p>
                         DGpac provides a comprehensive inventory of UN-tested
                         packaging. including various forms such as drums

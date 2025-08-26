@@ -29,6 +29,7 @@ import {
   Funnel,
   FunnelSolid,
   Check,
+  Whatsapp,
 } from "./items";
 
 const icons = {
@@ -61,6 +62,7 @@ const icons = {
   funnel: Funnel,
   "funnel-solid": FunnelSolid,
   check: Check,
+  whatsapp: Whatsapp
 };
 
 export type IconName = keyof typeof icons;

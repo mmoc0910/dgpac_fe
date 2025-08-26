@@ -11,7 +11,7 @@ export function Projects({ projects }: Props) {
     <div id="projects" className="py-3 lg:py-16 xl:py-16 lg:bg-background-secondary space-y-3 md:space-y-8">
       <Heading
         heading="OUR PROJECTS"
-        className="text-primary px-4 lg:px-16 xl:px-28"
+        className="lg:text-primary px-4 lg:px-16 xl:px-28"
       />
       <div
         className="max-md:scroll-px-4 max-md:flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:scroll-smooth 

@@ -1,4 +1,5 @@
 import { ButtonContactUs, Heading } from "@/components";
+import clsx from "clsx";
 import React from "react";
 
 export function ExpertOfLocation() {
@@ -8,10 +9,17 @@ export function ExpertOfLocation() {
         <Heading heading="EXPERT ON LOCATION" className="text-primary" />
       </div>
       <div className="bg-gray100 rounded-[10px] p-4 lg:p-6 space-y-3">
-        <div className="block lg:hidden">
-          <Heading heading="EXPERT ON LOCATION" className="text-primary" />
+        <div className={clsx("pb-6 block lg:hidden")}>
+          <h2
+            className={clsx(
+              `text-black text-center font-oswald font-bold text-[28px] lg:text-[48px] relative`,
+              "after:content-[''] after:w-[60px] after:block after:border-t-2 after:border-t-inherit after:absolute after:-bottom-2 after:right-1/2 after:translate-x-1/2"
+            )}
+          >
+            Expert on Location
+          </h2>
         </div>
-        <h4 className="max-md:text-center max-md:px-4">
+        <h4 className="max-md:text-justify">
           <span className="text-primary font-bold">
             Bringing Dangerous Goods (DG) expertise directly to your site!
           </span>{" "}
@@ -77,7 +85,7 @@ export function ExpertOfLocation() {
                 <p className="text-neutral700 font-bold">
                   Value-added Services
                 </p>
-                <ul className="list-disc pl-7 text-neutral800">
+                <ul className="hidden lg:block list-disc pl-7 text-neutral800">
                   <li>Plywood/Heat-treated Overpack</li>
                   <li>Plywood/Heat-treated Crating</li>
                   <li>Medical/Biological/Clinical Dry Ice Supply</li>
