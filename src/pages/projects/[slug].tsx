@@ -67,6 +67,7 @@ export default function ProjectDetail({
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
                   components={{
+                    p: ({ children }) => <p className="text-justify">{children}</p>,
                     strong: ({ children }) => (
                       <strong className="text-primary500 font-bold">
                         {children}
@@ -82,7 +83,7 @@ export default function ProjectDetail({
                       <img
                         src={src || ""}
                         alt={alt || ""}
-                        className="max-w-full h-auto rounded-[10px]"
+                        className="max-w-full h-auto w-full py-3"
                       />
                     ),
                   }}

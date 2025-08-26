@@ -13,12 +13,6 @@ const headquarters = [
     email: "sales@dgpac.com.sg",
   },
   {
-    title: "DGpac Vietnam Co., Ltd",
-    phone: ["(+84) 989 956 430"],
-    location: `12th floor, 39B Truong Son Street, Tan Son Nhat Ward, Hochiminh City 70000, Vietnam`,
-    email: "hanna@dgpac.vn",
-  },
-  {
     title: "Changi Airfreight Centre Office",
     phone: ["(+65) 6242 2562"],
     location: `115 Airport Cargo Road
@@ -29,6 +23,12 @@ const headquarters = [
     title: "HMS Packing Co., Ltd",
     phone: ["(+66) 99 178 9393"],
     email: "sales@hazmatms.com",
+  },
+  {
+    title: "DGpac Vietnam Co., Ltd",
+    phone: ["(+84) 989 956 430"],
+    location: `12th floor, 39B Truong Son Street, Tan Son Nhat Ward, Hochiminh City 70000, Vietnam`,
+    email: "hanna@dgpac.vn",
   },
   {
     title: "DGPAC SDN. BHD",

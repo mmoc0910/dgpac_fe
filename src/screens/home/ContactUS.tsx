@@ -130,7 +130,7 @@ export function ContactUS() {
             </div>
             <div className="flex items-center justify-center md:hidden">
               <button
-                className="font-bold text-xl px-4 py-2 rounded-[10px] bg-white border border-primary50"
+                className="font-bold text-xl px-4 py-2 rounded-[10px] bg-white text-primary500"
                 onClick={() => setshowForm(true)}
               >
                 SEND A REQUEST
