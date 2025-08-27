@@ -70,7 +70,7 @@ export function Introduce() {
           </div>
         </div>
       </div>
-      <div className="space-y-1 block md:hidden px-4">
+      {/* <div className="space-y-1 block md:hidden px-4">
         <p className="text-base text-neutral800">
           <span className="font-bold">“DGpac”</span> - a simple name yet widely
           recognized in the Dangerous Goods industry.
@@ -88,7 +88,7 @@ export function Introduce() {
           ensure your Dangerous Goods are transported safely, promptly, and
           cost-effectively - in accordance with regulations.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

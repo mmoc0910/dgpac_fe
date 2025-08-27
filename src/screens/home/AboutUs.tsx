@@ -40,7 +40,7 @@ export function AboutUs() {
       id="about-us"
       className="lg:bg-background-secondary px-4 py-6 xl:px-28 xl:py-16 lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0"
     >
-      <div className="relative w-full aspect-square lg:aspect-auto rounded-xl overflow-hidden">
+      <div className="relative w-full aspect-square lg:aspect-auto rounded-xl overflow-hidden hidden lg:block">
         <Image
           priority
           src={"/images/Rectangle2071.png"}

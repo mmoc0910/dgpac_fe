@@ -237,7 +237,7 @@ export function ContactUS() {
                 <ul className="max-md:text-sm font-semibold text-white list-disc pl-5">
                   <li>All information provided will remain confidential</li>
                   <li>
-                    (<span className="text-primary">*</span>) is required field
+                    (<span className="text-white md:text-primary">*</span>) is required field
                   </li>
                 </ul>
               )}
