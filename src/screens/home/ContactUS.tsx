@@ -27,7 +27,7 @@ export function ContactUS() {
     reset,
     formState: { errors },
   } = useForm<ContactFormValues>();
-  console.log("errors ~ ", errors);
+  // console.log("errors ~ ", errors);
   useEffect(() => {
     if (isSuccess) {
       timeoutRef.current = setTimeout(() => {

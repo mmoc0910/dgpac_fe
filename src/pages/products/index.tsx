@@ -15,7 +15,7 @@ import Link from "next/link";
 export default function Products({
   products,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
-  console.log('products ~ ', products)
+  // console.log('products ~ ', products)
   return (
     <div className="">
       <Seo

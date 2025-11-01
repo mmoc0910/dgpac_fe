@@ -17,7 +17,7 @@ export function SelectInput({
   data,
   ...useControllerProps
 }: ISelectInputProps) {
-  console.log("data countries ~ ", data);
+  // console.log("data countries ~ ", data);
   const [open, setOpen] = React.useState<boolean>(false);
   const [searchText, setSearchText] = React.useState<string>("");
 
