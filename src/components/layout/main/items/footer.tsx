@@ -26,7 +26,7 @@ const headquarters = [
   },
   {
     title: "DGpac Vietnam Co., Ltd",
-    phone: ["(+84) 989 956 430"],
+    phone: ["(+84) 352 097 307"],
     location: `12th floor, 39B Truong Son Street, Tan Son Nhat Ward, Hochiminh City 70000, Vietnam`,
     email: "hanna@dgpac.vn",
   },
@@ -197,7 +197,7 @@ export function Footer() {
         </Link>
         <Link
           target="_blank"
-          href={"https://zalo.me/0989956430"}
+          href={"https://zalo.me/0352097307"}
           className="size-11 md:size-[60px] rounded-full cursor-pointer flex items-center justify-center bg-primary500"
         >
           <Image
